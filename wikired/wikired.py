@@ -1,12 +1,11 @@
 import markovify
 import tweepy
 from tweepy import OAuthHandler
-from sqlalchemy import create_engine
+from wikired import config
 
 
 def connectDatabase():
-    engine = create_engine("mysql+mysqldb://USER:" + 'PASS' + "@YOURIPGOESHERE:PORT/DATABASE?charset=utf8mb4",
-                           encoding='utf-8')
+    engine = config.engine
     connect = engine.connect()
     return connect
 
@@ -26,13 +25,8 @@ def generateTweet(tweetList):
 
 
 def publishTweet(tweet, con):
-    consumer_key = ''
-    consumer_secret = ''
-    access_token = ''
-    access_secret = ''
-
-    auth = OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_secret)
+    auth = OAuthHandler(config.consumer_key, config.consumer_secret)
+    auth.set_access_token(config.access_token, config.access_secret)
     tweetBot = tweepy.API(auth)
     try:
         print(tweet)
@@ -50,7 +44,6 @@ def main():
     tweet = generateTweet(tweetList)
     publishTweet(tweet, con)
 
-    con.close()
 
 
 if __name__ == '__main__':

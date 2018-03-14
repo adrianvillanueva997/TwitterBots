@@ -1,6 +1,8 @@
 import re
 import csv
-import sqlite3
+from sqlalchemy import create_engine
+
+
 
 
 def readCSV():
@@ -15,6 +17,7 @@ def readCSV():
 
 def regex(tweets):
     regex = r'(@[A-Za-z0-9_]+)'
+    regex2 = r'([A-Za-z0-9_]+)'
     updatedList = []
     for tweet in tweets:
         newTweet = re.sub(regex, '', tweet)
@@ -22,32 +25,23 @@ def regex(tweets):
         newTweet = str(newTweet).replace('RT : ', '')
         newTweet = str(newTweet).replace('\"', '\"\"')
         newTweet = str(newTweet).replace('\'', '\'\'')
+        newTweet = str(newTweet).replace('%', '%%')
         updatedList.append(newTweet)
         print(newTweet)
     return updatedList
 
 
 def tweetExporter(tweets):
-    try:
-        dataBase = 'TweetsDB.db'
-        db = sqlite3.connect(dataBase)
-        for tweet in tweets:
-            query = 'INSERT into Wikired_Data (Text) VALUES ' + '(\'' + tweet + '\')'
-            db.execute(query)
-            db.commit()
-            print('Insertado: ' + tweet)
-        db.close()
-    except Exception as e:
-        print(e)
+    for tweet in tweets:
+        query = 'INSERT into Wikired_Data (Text) VALUES ' + '(\'' + str(tweet) + '\')'
+        con.execute(query)
+        print('Insertado: ' + tweet)
 
 
-def main():
+if __name__ == '__main__':
     try:
         tweets = readCSV()
         tweets = regex(tweets)
         tweetExporter(tweets)
     except Exception as e:
         print(e)
-
-
-main()
