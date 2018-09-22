@@ -4,7 +4,7 @@ Small twitter bot that learns from other tweets and generates tweets acording to
 * Spanish bot: [@wikiredmsr](https://twitter.com/wikiredmsr)
 * English bot: [@varian_joestar](https://twitter.com/varian_joestar)
 * Reddit bot (r/IamGoingToHellForThis) [@HellGoin](https://twitter.com/HellGoin) Special thanks to [Alexiwto](https://github.com/alexiwto)
-* Another Spanish bot: [@eressGilipollas](https://twitter.com/eressGilipollas)
+* Another Spanish bot: [@_simpsonquotes](https://twitter.com/_simpsonquotes)
 
 ## Getting Started
 
