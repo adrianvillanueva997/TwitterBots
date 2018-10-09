@@ -3,10 +3,10 @@ import csv
 from tweepy import OAuthHandler
 
 # Twitter API credentials
-consumer_key = '5XDMHKiHvl10spl6DDd9dCwkI'
-consumer_secret = 'vrM1UBlmQRKErvpRksGEp1EmbdhSBrnB6jKF2o8ueCmmtZ42Qu'
-access_token = '4251643571-q7tKcUwyEqUDc5xm4xbYzR3MpdVmzhoY0E5QSLn'
-access_secret = 'Wv3HUfSZGZKBAehdjDsdCd5l2YiKe1Ka2jFhjopCpWtzY'
+consumer_key = ''
+consumer_secret = ''
+access_token = ''
+access_secret = ''
 
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
